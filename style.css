@@ -1,0 +1,1009 @@
+/* ===== FUENTES LLAMATIVAS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* ===== VARIABLES DE COLOR CARTAGENA ===== */
+:root {
+    --amarillo-chiva: #FFD166;    /* Amarillo vibrante de chivas */
+    --rojo-pasion: #EF476F;       /* Rojo pasión - fiesta */
+    --azul-caribe: #118AB2;       /* Azul del mar Caribe */
+    --verde-palma: #06D6A0;       /* Verde de palmeras */
+    --noche-cartagena: #073B4C;   /* Azul noche cartagenera */
+    --blanco: #FFFFFF;
+    --dorado: #FF9E00;
+}
+
+/* ===== HERO SECTION - BELLO Y LLAMATIVO ===== */
+/* ===== HERO SECTION CON TU IMAGEN ===== */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    /* CAMBIA ESTA LÍNEA: Reemplaza la URL con tu imagen */
+    background: 
+        /* Gradiente para mejor contraste */
+        linear-gradient(
+            135deg, 
+            rgba(7, 59, 76, 0.6) 0%,      /* Overlay oscuro arriba */
+            rgba(7, 59, 76, 0.5) 50%,      /* Transición media */
+            rgba(17, 138, 178, 0.5) 100%   /* Más claro abajo */
+        ),
+        /* ⬇️⬇️⬇️ REEMPLAZA ESTA RUTA ⬇️⬇️⬇️ */
+       url('images/chiva-lopez.jpeg') center/contain no-repeat;
+        /* ⬆️⬆️⬆️ PON AQUÍ TU RUTA ⬆️⬆️⬆️ */
+    background-color: var(--noche-cartagena);   /*COLOR DE FONDO, CASO IMAGEN NO LLENE*/ 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--blanco);
+    overflow: hidden;
+    padding: 2rem;
+}
+
+/* Decoración de fondo sutil (mantener) */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 209, 102, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(239, 71, 111, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Desactivar partículas flotantes (ya lo tienes bien) */
+.hero::after {
+    display: none; /* ✅ Correcto - ya está desactivado */
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* ===== SELECTOR DE IDIOMA ELEGANTE ===== */
+.hero .lang-switch {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    display: flex;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 10;
+}
+
+.hero .lang-switch a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    min-width: 40px;
+    text-align: center;
+}
+
+.hero .lang-switch a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.hero .lang-switch a:first-child {
+    background: var(--amarillo-chiva);
+    color: var(--noche-cartagena);
+    font-weight: 700;
+}
+
+.hero .lang-switch span {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 300;
+}
+
+/* ===== CONTENIDO PRINCIPAL DEL HERO ===== */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 2rem;
+    animation: aparecer 1.2s ease-out;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TÍTULO PRINCIPAL - ELEGANTE Y LLAMATIVO */
+/* ===== TÍTULO PRINCIPAL ===== */
+.hero h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(3.5rem, 8vw, 5.5rem);
+    color: var(--amarillo-chiva);
+    margin-bottom: 3rem; /* ¡CAMBIADO de 25rem a 3rem! */
+    line-height: 1.1;
+    text-shadow: 
+        3px 3px 0 rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 209, 102, 0.4);
+    position: relative;
+    display: block; /* Cambiado a block (no inline-block) */
+    text-align: center; /* Para centrarlo */
+    width: 100%;
+}
+
+.hero h1::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; /* Un poco más abajo */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--verde-palma), 
+        transparent
+    );
+}
+
+/* ===== CONTENEDOR PARA EL SUBTÍTULO Y BOTÓN ===== */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem; /* Espacio entre elementos internos */
+    padding: 2rem 0;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ===== SUBTÍTULO ===== */
+.hero p {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 0; /* Eliminado - ahora usa gap del contenedor */
+    max-width: 700px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    text-align: center; /* Para centrar el texto */
+    display: block; /* Cambiado a block normal */
+    width: 100%;
+}
+
+/* ===== BOTÓN WHATSAPP HERMOSO ===== */
+.hero .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--noche-cartagena);
+    background: linear-gradient(135deg, 
+        var(--amarillo-chiva) 0%, 
+        var(--dorado) 100%
+    );
+    padding: 18px 45px;
+    border-radius: 50px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0; /* Eliminado - ahora usa gap del contenedor */
+    box-shadow: 
+        0 10px 30px rgba(255, 209, 102, 0.4),
+        0 0 0 3px rgba(255, 255, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    width: auto; /* Ancho automático en lugar de 100% */
+    min-width: 280px; /* Ancho mínimo para que se vea bien */
+}
+
+.hero .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        transparent
+    );
+    transition: left 0.7s;
+    z-index: -1;
+}
+
+.hero .btn::after {
+    content: '🎉';
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 15px 40px rgba(255, 209, 102, 0.6),
+        0 0 0 5px rgba(255, 255, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    color: var(--rojo-pasion);
+}
+
+.hero .btn:hover::before {
+    left: 100%;
+}
+
+.hero .btn:hover::after {
+    right: 20px;
+    opacity: 1;
+}
+/* Icono de WhatsApp */
+.hero .btn i {
+    font-size: 1.5rem;
+    animation: latido 2s infinite;
+}
+
+@keyframes latido {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* ===== ELEMENTOS DECORATIVOS ===== */
+/* Decoración de palmeras sutiles */
+.palmera-decor {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 150px;
+    height: 200px;
+    background: linear-gradient(to top, 
+        rgba(6, 214, 160, 0.1), 
+        transparent
+    );
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.palmera-decor:nth-child(2) {
+    left: auto;
+    right: 5%;
+    transform: scaleX(-1);
+}
+
+/* Estrellas decorativas */
+.estrellas {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 100px;
+    height: 100px;
+    background-image: 
+        radial-gradient(circle at 30% 30%, var(--amarillo-chiva) 2px, transparent 3px),
+        radial-gradient(circle at 70% 50%, var(--amarillo-chiva) 2px, transparent 3px),
+        radial-gradient(circle at 50% 70%, var(--amarillo-chiva) 2px, transparent 3px);
+    opacity: 0.3;
+    animation: brillar 3s infinite alternate;
+}
+
+@keyframes brillar {
+    from { opacity: 0.2; }
+    to { opacity: 0.5; }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .hero {
+        padding: 1.5rem;
+        min-height: 90vh;
+    }
+    
+    .hero .lang-switch {
+        top: 20px;
+        right: 20px;
+        padding: 6px 12px;
+    }
+    
+    .hero h1 {
+        font-size: clamp(2.5rem, 7vw, 4rem);
+    }
+    
+    .hero p {
+        font-size: clamp(1.1rem, 4vw, 1.5rem);
+        padding: 0 1rem;
+    }
+    
+    .hero .btn {
+        padding: 16px 35px;
+        font-size: 1.1rem;
+        width: 90%;
+        max-width: 350px;
+        justify-content: center;
+    }
+    
+    .palmera-decor {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .hero .btn {
+        padding: 14px 25px;
+        font-size: 1rem;
+    }
+    
+    .hero .lang-switch {
+        top: 15px;
+        right: 15px;
+    }
+    
+    .hero .lang-switch a {
+        padding: 4px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== ANIMACIÓN DE ENTRADA PARA TEXTO ===== */
+.hero h1, .hero p, .hero .btn {
+    opacity: 0;
+    animation: deslizarArriba 0.8s ease-out forwards;
+}
+
+.hero h1 {
+    animation-delay: 0.2s;
+}
+
+.hero p {
+    animation-delay: 0.5s;
+}
+
+.hero .btn {
+    animation-delay: 0.8s;
+}
+
+@keyframes deslizarArriba {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ===== SISTEMA DE DISEÑO COHERENTE ===== */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* ===== VARIABLES GLOBALES ===== */
+:root {
+    /* PALETA PRINCIPAL */
+    --amarillo-chiva: #FFD166;    /* Amarillo vibrante de chivas */
+    --rojo-pasion: #EF476F;       /* Rojo pasión - fiesta */
+    --azul-caribe: #118AB2;       /* Azul del mar Caribe */
+    --verde-palma: #06D6A0;       /* Verde de palmeras */
+    --noche-cartagena: #073B4C;   /* Azul noche cartagenera */
+    --blanco: #FFFFFF;
+    --dorado: #FF9E00;
+    
+    /* TONOS SECUNDARIOS */
+    --amarillo-suave: rgba(255, 209, 102, 0.1);
+    --azul-suave: rgba(17, 138, 178, 0.1);
+    --rojo-suave: rgba(239, 71, 111, 0.1);
+    
+    /* SOMBRAS Y EFECTOS */
+    --sombra-suave: 0 8px 25px rgba(0, 0, 0, 0.1);
+    --sombra-media: 0 12px 35px rgba(0, 0, 0, 0.15);
+    --sombra-fuerte: 0 18px 45px rgba(0, 0, 0, 0.2);
+    --borde-redondeado: 16px;
+    --borde-redondeado-pequeno: 8px;
+}
+
+/* ===== RESET Y BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--noche-cartagena);
+    line-height: 1.6;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    overflow-x: hidden;
+}
+
+/* ===== CONTAINERS Y SECCIONES ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Patrón de fondo para todas las secciones */
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 10% 20%, var(--amarillo-suave) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, var(--azul-suave) 0%, transparent 20%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Títulos de sección coherentes */
+.section-title {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: var(--noche-cartagena);
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--amarillo-chiva), 
+        var(--verde-palma), 
+        var(--azul-caribe)
+    );
+    border-radius: 2px;
+}
+
+/* ===== EXPERIENCE SECTION (Lo que ofrecen) ===== */
+.experience {
+    background: var(--blanco);
+}
+
+.experience .section-description {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+    line-height: 1.8;
+    position: relative;
+    padding: 20px;
+    background: rgba(255, 209, 102, 0.05);
+    border-radius: var(--borde-redondeado);
+    border-left: 4px solid var(--amarillo-chiva);
+}
+
+/* Lista de puntos del tour - Mismo estilo que hero */
+.tour-points {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+}
+
+.tour-points li {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    background: var(--blanco);
+    padding: 20px 25px;
+    border-radius: var(--borde-redondeado);
+    border: 2px solid var(--amarillo-chiva);
+    color: var(--noche-cartagena);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--sombra-suave);
+}
+
+.tour-points li::before {
+    content: '📍';
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.tour-points li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 209, 102, 0.2), 
+        transparent
+    );
+    transition: left 0.5s;
+}
+
+.tour-points li:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-media);
+    border-color: var(--verde-palma);
+}
+
+.tour-points li:hover::after {
+    left: 100%;
+}
+
+/* Galería con mismo estilo */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: var(--borde-redondeado);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--sombra-suave);
+    border: 3px solid transparent;
+}
+
+.gallery-grid img:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: var(--sombra-fuerte);
+    border-color: var(--amarillo-chiva);
+}
+
+/* ===== WHY-US SECTION ===== */
+.why-us {
+    background: linear-gradient(135deg, var(--noche-cartagena), #0a4b63);
+    color: var(--blanco);
+}
+
+.why-us .section-title {
+    color: var(--blanco);
+}
+
+.why-us .section-title::after {
+    background: linear-gradient(90deg, 
+        var(--amarillo-chiva), 
+        var(--verde-palma)
+    );
+}
+
+.why-us ul {
+    list-style: none;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.why-us li {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 25px 30px;
+    margin-bottom: 1.5rem;
+    border-radius: var(--borde-redondeado);
+    border-left: 5px solid var(--amarillo-chiva);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.why-us li::before {
+    content: '✓';
+    color: var(--verde-palma);
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    min-width: 30px;
+}
+
+.why-us li:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.15);
+    border-left-color: var(--verde-palma);
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact {
+    background: linear-gradient(135deg, 
+        rgba(255, 209, 102, 0.1) 0%, 
+        rgba(17, 138, 178, 0.1) 100%
+    );
+}
+
+.contact-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-text {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 3rem;
+    padding: 25px;
+    background: var(--blanco);
+    border-radius: var(--borde-redondeado);
+    box-shadow: var(--sombra-suave);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.contact-text:hover {
+    border-color: var(--azul-caribe);
+    transform: translateY(-5px);
+}
+
+/* Botón de contacto - Mismo estilo que hero pero variante */
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--noche-cartagena);
+    background: linear-gradient(135deg, 
+        var(--verde-palma) 0%, 
+        var(--azul-caribe) 100%
+    );
+    padding: 18px 45px;
+    border-radius: 50px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 2rem 0;
+    box-shadow: 
+        0 10px 30px rgba(6, 214, 160, 0.4),
+        0 0 0 3px rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        transparent
+    );
+    transition: left 0.7s;
+    z-index: -1;
+}
+
+.contact-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 15px 40px rgba(6, 214, 160, 0.6),
+        0 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.contact-btn:hover::before {
+    left: 100%;
+}
+
+.contact-btn i {
+    font-size: 1.5rem;
+}
+
+/* Redes sociales - Coherente con hero */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--noche-cartagena);
+    text-decoration: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    background: var(--blanco);
+    border: 2px solid var(--amarillo-chiva);
+    transition: all 0.3s ease;
+    box-shadow: var(--sombra-suave);
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+    background: var(--amarillo-chiva);
+    color: var(--noche-cartagena);
+    box-shadow: var(--sombra-media);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: var(--noche-cartagena);
+    color: var(--blanco);
+    padding: 60px 0 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, 
+        var(--amarillo-chiva), 
+        var(--verde-palma), 
+        var(--azul-caribe)
+    );
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    color: var(--amarillo-chiva);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.footer-text {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.copyright {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.7;
+    font-size: 0.95rem;
+}
+
+/* ===== ELEMENTOS DECORATIVOS PARA TODAS LAS SECCIONES ===== */
+
+/* Decoración de palmera para todas las secciones */
+.section-palmera {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 100px;
+    height: 150px;
+    background: linear-gradient(to top, 
+        rgba(6, 214, 160, 0.05), 
+        transparent
+    );
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.section-palmera:nth-child(even) {
+    left: auto;
+    right: 5%;
+    transform: scaleX(-1);
+}
+
+/* Estrellas decorativas */
+.section-estrella {
+    position: absolute;
+    top: 20%;
+    width: 80px;
+    height: 80px;
+    background-image: 
+        radial-gradient(circle at 30% 30%, var(--amarillo-chiva) 1px, transparent 2px),
+        radial-gradient(circle at 70% 50%, var(--amarillo-chiva) 1px, transparent 2px),
+        radial-gradient(circle at 50% 70%, var(--amarillo-chiva) 1px, transparent 2px);
+    opacity: 0.1;
+    animation: brillar 4s infinite alternate;
+}
+
+/* ===== ANIMACIONES GLOBALES ===== */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes deslizarArriba {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicar animaciones a todos los elementos */
+.section-title,
+.section-description,
+.tour-points li,
+.gallery-grid img,
+.why-us li,
+.contact-text,
+.contact-btn,
+.social-link {
+    opacity: 0;
+    animation: deslizarArriba 0.8s ease-out forwards;
+}
+
+/* Delays escalonados */
+.section-title { animation-delay: 0.1s; }
+.section-description { animation-delay: 0.2s; }
+.tour-points li:nth-child(1) { animation-delay: 0.3s; }
+.tour-points li:nth-child(2) { animation-delay: 0.4s; }
+.tour-points li:nth-child(3) { animation-delay: 0.5s; }
+.tour-points li:nth-child(4) { animation-delay: 0.6s; }
+.gallery-grid img:nth-child(1) { animation-delay: 0.3s; }
+.gallery-grid img:nth-child(2) { animation-delay: 0.5s; }
+.gallery-grid img:nth-child(3) { animation-delay: 0.7s; }
+.why-us li:nth-child(1) { animation-delay: 0.3s; }
+.why-us li:nth-child(2) { animation-delay: 0.4s; }
+.why-us li:nth-child(3) { animation-delay: 0.5s; }
+.why-us li:nth-child(4) { animation-delay: 0.6s; }
+
+/* ===== RESPONSIVE DESIGN COHERENTE ===== */
+@media (max-width: 1024px) {
+    .section {
+        padding: 60px 0;
+    }
+    
+    .tour-points {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 50px 0;
+    }
+    
+    .section-title {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+    }
+    
+    .tour-points {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .why-us li {
+        padding: 20px;
+        font-size: 1.1rem;
+    }
+    
+    .contact-btn,
+    .social-link {
+        padding: 15px 25px;
+        font-size: 1rem;
+    }
+    
+    .section-palmera {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 40px 0;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .tour-points li,
+    .why-us li {
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+    
+    .contact-btn {
+        padding: 14px 20px;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .social-link {
+        width: 90%;
+        justify-content: center;
+    }
+}
+
