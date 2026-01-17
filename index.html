@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,9 +8,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --chiva-green: #2dfc52;
+            --chiva-purple: #9d00ff;
+            --chiva-cyan: #00e5ff;
+            --chiva-yellow: #fdfd00;
+            --chiva-dark: #0a0b1e;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background: #0d0221;
+            background: var(--chiva-dark);
             color: white;
             margin: 0;
             overflow-x: hidden;
@@ -17,36 +26,31 @@
         .font-pacifico { font-family: 'Pacifico', cursive; }
         .font-montserrat { font-family: 'Montserrat', sans-serif; }
 
-        /* FONDO DEL HERO - IMAGEN GENERAL */
+        /* FONDO DEL HERO */
         .bg-hero-company {
-            background-image: linear-gradient(to bottom, rgba(13, 2, 33, 0.7), rgba(13, 2, 33, 0.9)), 
+            background-image: linear-gradient(to bottom, rgba(10, 11, 30, 0.6), rgba(10, 11, 30, 0.95)), 
                               url('https://images.unsplash.com/photo-1590019220033-5c8e3cc00d02?q=80&w=2000&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
-        /* LOGO DE LA EMPRESA (DETRÁS DEL TÍTULO) */
-        .company-logo-placeholder {
-            mask-image: linear-gradient(to bottom, black, transparent);
-            -webkit-mask-image: linear-gradient(to bottom, black, transparent);
-            opacity: 0.3;
-            filter: grayscale(1) brightness(2);
+        .neon-text-green {
+            text-shadow: 0 0 10px rgba(45, 252, 82, 0.8), 0 0 20px rgba(45, 252, 82, 0.4);
         }
-
-        .neon-text-magenta {
-            text-shadow: 0 0 10px rgba(255, 0, 110, 0.8), 0 0 20px rgba(255, 0, 110, 0.5);
+        .neon-text-cyan {
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 229, 255, 0.4);
         }
         .neon-text-yellow {
-            text-shadow: 0 0 10px rgba(255, 190, 11, 0.8), 0 0 20px rgba(255, 190, 11, 0.5);
+            text-shadow: 0 0 10px rgba(253, 253, 0, 0.8), 0 0 20px rgba(253, 253, 0, 0.4);
         }
         
-        @keyframes neon-pulse {
-            0%, 100% { box-shadow: 0 0 15px rgba(255, 0, 110, 0.6); transform: scale(1); }
-            50% { box-shadow: 0 0 30px rgba(255, 0, 110, 0.9); transform: scale(1.02); }
+        @keyframes neon-pulse-green {
+            0%, 100% { box-shadow: 0 0 15px rgba(45, 252, 82, 0.4); transform: scale(1); }
+            50% { box-shadow: 0 0 30px rgba(45, 252, 82, 0.7); transform: scale(1.02); }
         }
-        .animate-neon {
-            animation: neon-pulse 2s infinite ease-in-out;
+        .animate-neon-green {
+            animation: neon-pulse-green 2s infinite ease-in-out;
         }
     </style>
 <script type="importmap">
