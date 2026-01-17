@@ -1,0 +1,8 @@
+{
+  "name": "López Tour - Cartagena Chiva Rumbera",
+  "description": "Una aplicación web interactiva para reservar tours en Chiva Rumbera por Cartagena, con galerías de imágenes, información detallada y asistente inteligente.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
