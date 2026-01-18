@@ -16,9 +16,9 @@ const App: React.FC = () => {
   };
 
   const videoUrls = [
-    "https://assets.mixkit.co/videos/preview/mixkit-party-people-dancing-in-a-nightclub-4384-large.mp4",
-    "https://assets.mixkit.co/videos/preview/mixkit-young-woman-dancing-in-a-party-with-friends-4385-large.mp4",
-    "https://assets.mixkit.co/videos/preview/mixkit-pumping-up-the-crowd-at-a-concert-23450-large.mp4"
+    "videos/vid1.mp4",
+    "videos/vid2.mp4",
+    "videos/vid3.mp4"
   ];
 
   return (
@@ -45,10 +45,7 @@ const App: React.FC = () => {
       {/* Hero Section */}
       <header className="relative min-h-screen flex flex-col items-center justify-center px-4 py-32 bg-hero-company">
         <div className="relative text-center space-y-10 max-w-5xl mx-auto px-4 z-10">
-          {/* Logo animado en fondo - Color Cian como el logo de la imagen */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[280px] h-[280px] md:w-[600px] md:h-[600px] pointer-events-none opacity-10">
-             <img src="https://cdn-icons-png.flaticon.com/512/3138/3138374.png" alt="Logo" className="w-full h-full object-contain animate-pulse filter invert-[70%] sepia-[100%] saturate-[1000%] hue-rotate-[150deg]" />
-          </div>
+         
 
           <div className="inline-block px-8 py-2 bg-[#2dfc52] text-black rounded-full text-[10px] font-black tracking-[0.4em] uppercase mb-4 shadow-[0_0_20px_rgba(45,252,82,0.6)]">
             {t.heroTag}

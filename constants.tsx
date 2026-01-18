@@ -22,37 +22,37 @@ export const CONTENT = {
         id: 'bocagrande', 
         title: 'Bocagrande', 
         description: 'La moderna zona hotelera con impresionantes rascacielos frente al Mar Caribe.', 
-        image: 'https://images.unsplash.com/photo-1590019220033-5c8e3cc00d02?q=80&w=1200&auto=format&fit=crop' 
+        image: 'https://raw.githubusercontent.com/dei0811/PAGINA-TURISMO/main/images/bocagrande.jpg' 
       },
       { 
         id: 'reloj', 
         title: 'Torre del Reloj', 
         description: 'La entrada principal a la ciudad amurallada, un símbolo histórico de Cartagena.', 
-        image: 'https://images.unsplash.com/photo-1583531357285-f159a613c242?q=80&w=1200&auto=format&fit=crop' 
+        image: 'https://raw.githubusercontent.com/dei0811/PAGINA-TURISMO/main/images/torre.jpg' 
       },
       { 
         id: 'castillo', 
         title: 'Castillo San Felipe', 
         description: 'La fortificación más grande construida por los españoles en el Nuevo Mundo.', 
-        image: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=1200&auto=format&fit=crop' 
+        image: 'https://raw.githubusercontent.com/dei0811/PAGINA-TURISMO/main/images/castle-of-san-felipe-3752744.jpg' 
       },
       { 
         id: 'botas', 
         title: 'Las Botas Viejas', 
         description: 'Un monumento dedicado al poeta Luis Carlos López, parada obligatoria para fotos.', 
-        image: 'https://images.unsplash.com/photo-1628153347525-45d3e0984920?q=80&w=1200&auto=format&fit=crop' 
+        image: 'https://raw.githubusercontent.com/dei0811/PAGINA-TURISMO/main/images/botas.jpg' 
       },
       { 
         id: 'muralla', 
         title: 'Murallas', 
         description: 'Kilómetros de historia que abrazan el centro histórico de la ciudad.', 
-        image: 'https://images.unsplash.com/photo-1518105779142-d975b22f1b0a?q=80&w=1200&auto=format&fit=crop' 
+        image: 'https://raw.githubusercontent.com/dei0811/PAGINA-TURISMO/main/images/Muralla.jpg' 
       },
       { 
         id: 'letras', 
         title: 'Letras Cartagena', 
         description: 'El parador fotográfico más famoso frente a las playas de Marbella.', 
-        image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/05/20/4b/letras-de-cartagena.jpg?w=1200&h=-1&s=1' 
+        image: 'https://raw.githubusercontent.com/dei0811/PAGINA-TURISMO/main/images/letras-ctg.jpeg' 
       }
     ],
     whyUs: ["Ambiente divertido y seguro", "Música en vivo y animación", "Ideal para grupos grandes", "Experiencia nocturna única"]
