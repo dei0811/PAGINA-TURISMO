@@ -1,0 +1,84 @@
+import { useEffect, useState } from 'react'
+import { client, urlFor } from '../sanity_client/client'
+import { HeroData } from '../types'
+
+interface HeroProps {
+  lang: 'es' | 'en'
+}
+
+export default function Hero({ lang }: HeroProps) {
+  const [hero, setHero] = useState<HeroData | null>(null)
+
+  useEffect(() => {
+    client
+      .fetch(`*[_type == "hero"][0]{
+        title_es,
+        title_en,
+        subtitle_es,
+        subtitle_en,
+        btn1Text_es,
+        btn1Text_en,
+        btn1Link,
+        btn2Text_es,
+        btn2Text_en,
+        btn2Link,
+        backgroundImage
+      }`)
+      .then((data) => setHero(data))
+      .catch((err) => console.error('Error fetching hero:', err))
+  }, [])
+
+  if (!hero) return <p className="text-center mt-20">Cargando hero...</p>
+
+  return (
+    <header
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 py-32"
+      style={{
+        backgroundImage: `linear-gradient(to bottom, rgba(10, 11, 30, 0.6), rgba(10, 11, 30, 0.95)), url(${urlFor(hero.backgroundImage).url()})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
+    >
+      <div className="relative text-center space-y-10 max-w-5xl mx-auto px-4 z-10">
+        {/* Tag */}
+        <div className="inline-block px-8 py-2 bg-[#2dfc52] text-black rounded-full text-[10px] font-black tracking-[0.4em] uppercase mb-4 shadow-[0_0_20px_rgba(45,252,82,0.6)]">
+          {lang === 'es' ? 'Tour Chiva' : 'Chiva Tour'}
+        </div>
+
+        {/* Title */}
+        <h1 className="font-pacifico text-7xl md:text-9xl text-white neon-text-green drop-shadow-2xl leading-tight">
+          {lang === 'es' ? hero.title_es : hero.title_en} <br className="md:hidden" />{' '}
+          <span className="text-[#fdfd00] neon-text-yellow">
+            {lang === 'es' ? '¡Disfruta!' : 'Enjoy!'}
+          </span>
+        </h1>
+
+        {/* Subtitle */}
+        <p className="text-xl md:text-3xl font-semibold text-white/95 max-w-2xl mx-auto leading-relaxed drop-shadow-md pt-4">
+          {lang === 'es' ? hero.subtitle_es : hero.subtitle_en}
+        </p>
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-6 justify-center pt-12 items-center">
+          <a
+            href={hero.btn1Link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto bg-[#fdfd00] text-black font-black py-6 px-10 rounded-2xl text-lg uppercase tracking-wider shadow-2xl hover:scale-105 transition-all animate-neon-green flex items-center justify-center gap-4"
+          >
+            {lang === 'es' ? hero.btn1Text_es : hero.btn1Text_en}
+          </a>
+          <a
+            href={hero.btn2Link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto bg-[#9d00ff] text-white font-black py-6 px-10 rounded-2xl text-lg uppercase tracking-wider shadow-2xl hover:scale-105 transition-all flex items-center justify-center gap-4 border-2 border-white/20"
+          >
+            {lang === 'es' ? hero.btn2Text_es : hero.btn2Text_en}
+          </a>
+        </div>
+      </div>
+    </header>
+  )
+}
