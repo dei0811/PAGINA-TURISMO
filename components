@@ -1,0 +1,187 @@
+
+import React from 'react';
+import { TourPoint } from '../types';
+
+interface TourModalProps {
+  point: TourPoint | null;
+  onClose: () => void;
+}
+
+const TourModal: React.FC<TourModalProps> = ({ point, onClose }) => {
+  if (!point) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-md animate-in fade-in duration-300">
+      <div className="relative w-full max-w-4xl bg-white rounded-3xl overflow-hidden shadow-2xl transform transition-all scale-up-center border-4 border-[#2dfc52]/20">
+        {/* Close Button */}
+        <button 
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 p-2 bg-[#9d00ff] text-white rounded-full hover:rotate-90 transition-transform duration-300 shadow-lg"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <div className="flex flex-col md:flex-row">
+          <div className="w-full md:w-1/2">
+            <img 
+              src={point.image} 
+              alt={point.title} 
+              className="w-full h-[300px] md:h-full object-cover"
+            />
+          </div>
+          <div className="w-full md:w-1/2 p-10 flex flex-col justify-center bg-white">
+            <span className="text-[#00e5ff] font-black text-xs uppercase tracking-[0.3em] mb-3">Parada del Tour</span>
+            <h2 className="text-4xl font-black text-[#0a0b1e] font-montserrat mb-6 leading-tight uppercase italic">
+              {point.title}
+            </h2>
+            <div className="w-16 h-2 bg-[#2dfc52] mb-6 rounded-full"></div>
+            <p className="text-gray-600 text-lg leading-relaxed mb-8 font-medium">
+              {point.description}
+            </p>
+            <a 
+              href="https://wa.me/573022481583" 
+              className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-black py-5 px-8 rounded-2xl hover:bg-[#2dfc52] hover:text-black transition-all duration-300 shadow-xl"
+            >
+              Consultar disponibilidad en WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TourModal;
+
+import { useEffect, useState } from 'react'
+import { client, urlFor } from '../sanity_client/client'
+import { HeroData } from '../types'
+
+interface HeroProps {
+  lang: 'es' | 'en'
+}
+
+export default function Hero({ lang }: HeroProps) {
+  const [hero, setHero] = useState<HeroData | null>(null)
+
+  useEffect(() => {
+    client
+      .fetch(`*[_type == "hero"][0]{
+        title_es,
+        title_en,
+        subtitle_es,
+        subtitle_en,
+        btn1Text_es,
+        btn1Text_en,
+        btn1Link,
+        btn2Text_es,
+        btn2Text_en,
+        btn2Link,
+        backgroundImage
+      }`)
+      .then((data) => setHero(data))
+      .catch((err) => console.error('Error fetching hero:', err))
+  }, [])
+
+  if (!hero) return <p className="text-center mt-20">Cargando hero...</p>
+
+  return (
+    <header
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 py-32"
+      style={{
+        backgroundImage: `linear-gradient(to bottom, rgba(10, 11, 30, 0.6), rgba(10, 11, 30, 0.95)), url(${urlFor(hero.backgroundImage).url()})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
+    >
+      <div className="relative text-center space-y-10 max-w-5xl mx-auto px-4 z-10">
+        {/* Tag */}
+        <div className="inline-block px-8 py-2 bg-[#2dfc52] text-black rounded-full text-[10px] font-black tracking-[0.4em] uppercase mb-4 shadow-[0_0_20px_rgba(45,252,82,0.6)]">
+          {lang === 'es' ? 'Tour Chiva' : 'Chiva Tour'}
+        </div>
+
+        {/* Title */}
+        <h1 className="font-pacifico text-7xl md:text-9xl text-white neon-text-green drop-shadow-2xl leading-tight">
+          {lang === 'es' ? hero.title_es : hero.title_en} <br className="md:hidden" />{' '}
+          <span className="text-[#fdfd00] neon-text-yellow">
+            {lang === 'es' ? '¡Disfruta!' : 'Enjoy!'}
+          </span>
+        </h1>
+
+        {/* Subtitle */}
+        <p className="text-xl md:text-3xl font-semibold text-white/95 max-w-2xl mx-auto leading-relaxed drop-shadow-md pt-4">
+          {lang === 'es' ? hero.subtitle_es : hero.subtitle_en}
+        </p>
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-6 justify-center pt-12 items-center">
+          <a
+            href={hero.btn1Link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto bg-[#fdfd00] text-black font-black py-6 px-10 rounded-2xl text-lg uppercase tracking-wider shadow-2xl hover:scale-105 transition-all animate-neon-green flex items-center justify-center gap-4"
+          >
+            {lang === 'es' ? hero.btn1Text_es : hero.btn1Text_en}
+          </a>
+          <a
+            href={hero.btn2Link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto bg-[#9d00ff] text-white font-black py-6 px-10 rounded-2xl text-lg uppercase tracking-wider shadow-2xl hover:scale-105 transition-all flex items-center justify-center gap-4 border-2 border-white/20"
+          >
+            {lang === 'es' ? hero.btn2Text_es : hero.btn2Text_en}
+          </a>
+        </div>
+      </div>
+    </header>
+  )
+}
+
+import React from 'react';
+import { TourPoint } from '../types';
+
+interface ImageCardProps {
+  point: TourPoint;
+  onClick: (point: TourPoint) => void;
+}
+
+const ImageCard: React.FC<ImageCardProps> = ({ point, onClick }) => {
+  return (
+    <div 
+      onClick={() => onClick(point)}
+      className="group relative overflow-hidden rounded-[2.5rem] cursor-pointer transition-all duration-700 hover:-translate-y-4 hover:shadow-[0_30px_70px_rgba(45,252,82,0.3)] aspect-[4/5] bg-gray-900 border-2 border-white/10"
+    >
+      {/* Background Image - CAMBIADO de point.image a point.imageUrl */}
+      <img 
+        src={point.imageUrl}  // ✅ CAMBIO AQUÍ
+        alt={point.title}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-125 opacity-70 group-hover:opacity-100"
+        onError={(e) => {
+          console.error('Error cargando imagen:', point.imageUrl);
+          e.currentTarget.src = 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=1000&fit=crop';
+        }}
+      />
+      
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0b1e] via-transparent to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-700"></div>
+      
+      {/* Text Content */}
+      <div className="absolute bottom-0 left-0 right-0 p-8 transform transition-all duration-700">
+        <h3 className="text-3xl font-black text-[#fdfd00] font-montserrat mb-3 drop-shadow-[0_2px_4px_rgba(0,0,0,1)] group-hover:text-white transition-all duration-500 uppercase italic">
+          {point.title}
+        </h3>
+        <p className="text-white/90 text-base font-semibold leading-snug mb-4 line-clamp-3 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-700 delay-100">
+          {point.description}
+        </p>
+        
+        {/* Neon Accent Line - Chiva Green */}
+        <div className="h-1.5 w-12 bg-[#2dfc52] rounded-full group-hover:w-full transition-all duration-700 shadow-[0_0_15px_#2dfc52]"></div>
+      </div>
+    </div>
+  );
+};
+
+export default ImageCard;
