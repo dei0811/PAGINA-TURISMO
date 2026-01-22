@@ -26,7 +26,7 @@ const TourModal: React.FC<TourModalProps> = ({ point, onClose }) => {
           {/* IMAGEN - CORREGIDO de image a imageUrl */}
           <div className="w-full md:w-1/2">
             <img 
-              src={point.imageUrl}  {/* ✅ CORRECTO */}
+              src={point.imageUrl}  
               alt={point.title} 
               className="w-full h-[300px] md:h-full object-cover"
             />
