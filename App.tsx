@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+/*import React, { useState, useEffect } from 'react';
 import ImageCard from './components/ImageCard';
 import TourModal from './components/TourModal';
 import { TourPoint } from './types';
